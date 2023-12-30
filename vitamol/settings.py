@@ -39,6 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+LOCAL_APPS = [
+    "product.apps.ProductConfig",
+]
+
+EXTERNAL_APPS = [
+    "rest_framework",
+    # "rest_framework_simplejwt",
+    "drf_spectacular",
+    # "django_celery_beat",
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
