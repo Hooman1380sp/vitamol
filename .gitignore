@@ -271,3 +271,4 @@ pyrightconfig.json
 /uploads/
 /venv/
 .idea
+/bin/
