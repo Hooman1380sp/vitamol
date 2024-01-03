@@ -5,13 +5,13 @@ from .models import Product, ProductGallery, ProductCategory
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ("name", "category", "description", "slug")
+        fields = ("name", "category", "description")
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = ("name", "slug", "image", "parent_category")
+        fields = ("name", "image", "parent_category")
 
 
 class ProductGallerySerializer(serializers.ModelSerializer):

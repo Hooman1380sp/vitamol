@@ -139,6 +139,30 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+REST_FRAMEWORK = {
+    # "DEFAULT_AUTHENTICATION_CLASSES": [
+    #     "rest_framework_simplejwt.authentication.JWTAuthentication",
+    # ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema" # swagger ui setting
+    # "DEFAULT_THROTTLE_CLASSES": [
+    #     "rest_framework.throttling.AnonRateThrottle",
+    #     "rest_framework.throttling.UserRateThrottle",
+    #     "rest_framework.throttling.ScopedRateThrottle",
+    # ],
+    # "DEFAULT_THROTTLE_RATES": {
+    #     "anon": "20/hour",
+    #     "user": "30/hour",
+    #     "get_request": "25/hour",
+    # },
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "vitamol",
+    "DESCRIPTION": "vitamol project is recently version and big refactor!!",
+    "VERSION": "1.0.0",
+    # "SERVE_INCLUDE_SCHEMA": False,
+}
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 # Arvan Clouds Storage
