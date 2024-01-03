@@ -17,7 +17,7 @@ class ProductListView(ListAPIView):
 class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
-    lookup_field = "slug"
+    # lookup_field = "slug"
 
 
 # productCategory
@@ -29,7 +29,7 @@ class ProductCategoryListView(ListAPIView):
 class ProductCategoryDetailView(RetrieveAPIView):
     serializer_class = ProductCategorySerializer
     queryset = ProductCategory.objects.all()
-    lookup_field = "slug"
+    # lookup_field = "id"
 
 
 class ProductGalleryDetailView(RetrieveAPIView):
