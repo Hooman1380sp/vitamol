@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "fa-ir"
 
-TIME_ZONE = 'Asia/Tehran'
+TIME_ZONE = "Asia/Tehran"
 
 USE_I18N = True
 
@@ -144,7 +144,7 @@ REST_FRAMEWORK = {
     # "DEFAULT_AUTHENTICATION_CLASSES": [
     #     "rest_framework_simplejwt.authentication.JWTAuthentication",
     # ],
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema" # swagger ui setting
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"  # swagger ui setting
     # "DEFAULT_THROTTLE_CLASSES": [
     #     "rest_framework.throttling.AnonRateThrottle",
     #     "rest_framework.throttling.UserRateThrottle",
@@ -168,7 +168,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 # Arvan Clouds Storage
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_ACCESS_KEY_ID = "37b843cd-1692-42c6-af48-2662ae70f593"
 AWS_S3_SECRET_ACCESS_KEY = "6174e66de8c9cf72000477b6b0c9ff0e55490bf0617e0bd6f0a6927d9358386c"
 AWS_S3_ENDPOINT_URL = "https://vitamol.s3.ir-thr-at1.arvanstorage.ir"
