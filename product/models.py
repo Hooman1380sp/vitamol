@@ -6,10 +6,9 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 class ProductCategory(MPTTModel):
     name = models.CharField(max_length=226, verbose_name="نام")
-    parent = TreeForeignKey(to="self", on_delete=models.SET_NULL, null=True, blank=True, editable=True)
+    parent = TreeForeignKey(to="self", on_delete=models.SET_NULL, null=True, blank=True, editable=True,related_name='subcategory')
     # slug = models.SlugField(max_length=500, verbose_name="آدرس اینترنتی", unique=True)
     image = models.ImageField(upload_to="product", verbose_name="تصویر")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     class MPTTMeta:
         order_insertions_by = ["name"]

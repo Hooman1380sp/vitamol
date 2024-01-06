@@ -7,7 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ("name", "category", "description","images")
+        fields = ("name", "category", "description", "images")
 
     def get_images(self, obj):
         result = obj.product_back.all()
@@ -17,7 +17,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = ("name", "image", "parent")
+        fields = ("id", "name", "image")
 
 
 class ProductGallerySerializer(serializers.ModelSerializer):
