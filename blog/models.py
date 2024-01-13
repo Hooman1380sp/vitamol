@@ -6,6 +6,7 @@ from imagekit.models import ImageSpecField
 class Blog(models.Model):
     title = models.CharField(max_length=300,verbose_name="عنوان")
     description = models.TextField(max_length=2500,verbose_name="توضیحات")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
         return f'{self.title} - {self.description[:30]}'
@@ -13,6 +14,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'وبلاگ'
         verbose_name_plural = 'وبلاگ ها'
+        ordering = ['-created']
 
 class BlogGallery(models.Model):
     blog = models.ForeignKey(to='Blog',on_delete=models.CASCADE,verbose_name="وبلاگ",related_name="back_blog")
