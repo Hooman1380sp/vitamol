@@ -33,11 +33,13 @@ ALLOWED_HOSTS = []
 
 LOCAL_APPS = [
     "product.apps.ProductConfig",
+    "blog.apps.BlogConfig",
 ]
 
 EXTERNAL_APPS = [
     "rest_framework",
     "mptt",
+    "imagekit",
     # "rest_framework_simplejwt",
     "drf_spectacular",
     # "django_celery_beat",
