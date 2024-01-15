@@ -3,18 +3,19 @@ from .models import Blog, BlogGallery
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
+    images = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
-        fields = ("name", "description", "image")
+        fields = ("title", "description", "images")
 
-    def get_image(self, obj: Blog):
+    def get_images(self, obj):
         result = obj.back_blog.all()
         return GalleryBlogSerializer(instance=result, many=True).data
 
 
 class GalleryBlogSerializer(serializers.ModelSerializer):
+    # thumbnail = serializers.ImageField()
     class Meta:
         model = BlogGallery
-        fields = ("blog", "image", "thumbnail")
+        fields = ("blog", "image")

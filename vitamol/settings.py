@@ -129,6 +129,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_CHARSET = 'utf-8'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -174,7 +175,7 @@ MEDIA_URL = "/media/"
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_ACCESS_KEY_ID = "37b843cd-1692-42c6-af48-2662ae70f593"
-AWS_S3_SECRET_ACCESS_KEY = "6174e66de8c9cf72000477b6b0c9ff0e55490bf0617e0bd6f0a6927d9358386c"
+AWS_S3_SECRET_ACCESS_KEY = "9d032a3d86a15c879b9f045c5e8540b57a64556e7ea6ced8873c5178671fae3b"
 AWS_S3_ENDPOINT_URL = "https://vitamol.s3.ir-thr-at1.arvanstorage.ir"
 AWS_STORAGE_BUCKET_NAME = "vitamol"
 AWS_SERVICE_NAME = "s3"
