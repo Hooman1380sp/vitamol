@@ -23,10 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-go^d^bybvucrhu4g6x&pi9ak=n0%#)xjam(czi9#w_0ro^q-&e"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["api.vitamolcare.com"]
 
 # Application definition
 
@@ -43,6 +42,7 @@ EXTERNAL_APPS = [
     "drf_spectacular",
     # "django_celery_beat",
     "storages",
+    "corsheaders",
 ]
 
 INSTALLED_APPS = [
@@ -64,6 +64,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # external middleware
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "vitamol.urls"
@@ -86,6 +89,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "vitamol.wsgi.application"
 
+# Cors headers
+CORS_ALLOWED_ORIGINS = [
+    # "*",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -128,14 +146,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-DEFAULT_CHARSET = 'utf-8'
+DEFAULT_CHARSET = "utf-8"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = "/home/vitamolc/www/vitamolcare.com/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -173,9 +191,9 @@ MEDIA_URL = "/media/"
 # Arvan Clouds Storage
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-AWS_ACCESS_KEY_ID = "37b843cd-1692-42c6-af48-2662ae70f593"
-AWS_S3_SECRET_ACCESS_KEY = "9d032a3d86a15c879b9f045c5e8540b57a64556e7ea6ced8873c5178671fae3b"
-AWS_S3_ENDPOINT_URL = "https://vitamol.s3.ir-thr-at1.arvanstorage.ir"
-AWS_STORAGE_BUCKET_NAME = "vitamol"
+AWS_ACCESS_KEY_ID = "127818df-bd8c-41f7-bc00-e2d965a62e7b"
+AWS_S3_SECRET_ACCESS_KEY = "773eeacdb3c905906e2b4e1e43655fda39b55a48"
+AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
+AWS_STORAGE_BUCKET_NAME = "django-testing"
 AWS_SERVICE_NAME = "s3"
 AWS_S3_FILE_OVERWRITE = False
