@@ -15,8 +15,8 @@ class BlogListView(APIView):
     serializer_class = BlogSerializer
 
     def get(self, request):
-        # todo: get only 50 char
-        ser_data = self.serializer_class(instance=, many=True)
+        blogs = Blog.objects.all()
+        ser_data = self.serializer_class(instance=blogs, many=True)
         return Response(data=ser_data.data, status=status.HTTP_200_OK)
 
 

@@ -4,11 +4,14 @@ from .models import Blog, BlogGallery
 
 class BlogSerializer(serializers.ModelSerializer):
     images = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
         fields = ("title", "description", "images")
 
+    def get_description(self,obj):
+        return obj.description[:50]
     def get_images(self, obj):
         result = obj.back_blog.all()
         return GalleryBlogSerializer(instance=result, many=True).data
