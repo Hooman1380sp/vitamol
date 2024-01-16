@@ -1,6 +1,4 @@
 from django.db import models
-from imagekit.processors import ResizeToFit
-from imagekit.models import ImageSpecField
 
 
 class Blog(models.Model):
@@ -20,7 +18,6 @@ class Blog(models.Model):
 class BlogGallery(models.Model):
     blog = models.ForeignKey(to="Blog", on_delete=models.CASCADE, verbose_name="وبلاگ", related_name="back_blog")
     image = models.ImageField(upload_to="blog", verbose_name="تصویر")
-    thumbnail = ImageSpecField(source="image", processors=[ResizeToFit(width=235, height=330)], options={"quality": 80})
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):

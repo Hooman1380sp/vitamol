@@ -10,15 +10,15 @@ class BlogSerializer(serializers.ModelSerializer):
         model = Blog
         fields = ("title", "description", "images")
 
-    def get_description(self,obj):
+    def get_description(self, obj):
         return obj.description[:50]
+
     def get_images(self, obj):
         result = obj.back_blog.all()
         return GalleryBlogSerializer(instance=result, many=True).data
 
 
 class GalleryBlogSerializer(serializers.ModelSerializer):
-    # thumbnail = serializers.ImageField()
     class Meta:
         model = BlogGallery
         fields = ("blog", "image")

@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404
 
 from .models import Blog, BlogGallery
 from .serializers import BlogSerializer, GalleryBlogSerializer
-from .utils import get_result
 
 
 class BlogListView(APIView):
