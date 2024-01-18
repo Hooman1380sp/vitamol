@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     "product.apps.ProductConfig",
     "blog.apps.BlogConfig",
+    "site_settings.apps.SiteSettingsConfig",
 ]
 
 EXTERNAL_APPS = [
