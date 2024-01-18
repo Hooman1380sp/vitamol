@@ -8,7 +8,7 @@ class BlogSerializerList(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = ("title", "description", "images")
+        fields = ("title", "description", "images","id")
 
     def get_description(self, obj):
         return obj.description[:50]
@@ -22,7 +22,7 @@ class BlogSerializerDetail(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = ("title", "description", "images")
+        fields = ("title", "description", "images","id")
 
     def get_images(self, obj):
         result = obj.gallery.all()

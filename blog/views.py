@@ -7,11 +7,11 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 
 from .models import Blog, BlogGallery
-from .serializers import BlogSerializer, GalleryBlogSerializer
+from .serializers import BlogSerializerList,BlogSerializerDetail, GalleryBlogSerializer
 
 
 class BlogListView(APIView):
-    serializer_class = BlogSerializer
+    serializer_class = BlogSerializerList
 
     def get(self, request):
         blogs = Blog.objects.all()
@@ -20,6 +20,6 @@ class BlogListView(APIView):
 
 
 class BlogDetailView(RetrieveAPIView):
-    serializer_class = BlogSerializer
+    serializer_class = BlogSerializerDetail
     queryset = Blog.objects.all()
     lookup_field = "id"

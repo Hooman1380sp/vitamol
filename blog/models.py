@@ -4,7 +4,7 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان")
     description = models.TextField(max_length=2500, verbose_name="توضیحات")
-    gallery = models.ManyToManyField(to='BlogGallery', verbose_name="وبلاگ", related_name="back_gallery")
+    gallery = models.ManyToManyField(to='BlogGallery', verbose_name="تصاویر", related_name="back_gallery")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
