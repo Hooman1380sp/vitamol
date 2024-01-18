@@ -6,9 +6,11 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 class ProductCategory(MPTTModel):
     name = models.CharField(max_length=226, verbose_name="نام")
-    parent = TreeForeignKey(to="self", on_delete=models.SET_NULL, null=True, blank=True, editable=True,related_name='subcategory')
+    parent = TreeForeignKey(
+        to="self", on_delete=models.SET_NULL, null=True, blank=True, editable=True, related_name="subcategory"
+    )
     # slug = models.SlugField(max_length=500, verbose_name="آدرس اینترنتی", unique=True)
-    image = models.ImageField(upload_to="product", verbose_name="تصویر")
+    image = models.ImageField(upload_to="product", verbose_name="تصویر", null=True, blank=True)
 
     class MPTTMeta:
         order_insertions_by = ["name"]
@@ -27,6 +29,9 @@ class Product(models.Model):
     description = models.TextField(max_length=7000, verbose_name="توضیحات")
     # price = models.IntegerField(verbose_name="قیمت", null=True, blank=True)
     # slug = models.SlugField(unique=True, verbose_name="آدرس اینترنتی", max_length=500, db_index=True)
+    gallery = models.ManyToManyField(
+        to="ProductGallery", verbose_name="تصاویر محصولات", related_name="gallery_back"
+    )
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
@@ -38,12 +43,10 @@ class Product(models.Model):
 
 
 class ProductGallery(models.Model):
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, verbose_name="محصول", related_name="product_back")
     image = models.ImageField(upload_to="product", verbose_name="تصویر")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
-        return f"{self.product} - {self.created}"
+        return f"{self.gallery_back.name} - {self.gallery_back.created}"
 
     class Meta:
         verbose_name = "گالری محصول"
