@@ -46,7 +46,7 @@ class ProductGallery(models.Model):
     image = models.ImageField(upload_to="product", verbose_name="تصویر")
 
     def __str__(self):
-        return f"{self.gallery_back.name} - {self.gallery_back.created}"
+        return f"{self.id}"
 
     class Meta:
         verbose_name = "گالری محصول"

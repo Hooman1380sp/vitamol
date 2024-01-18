@@ -6,21 +6,22 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 
 from .models import Product, ProductCategory
-from .serializers import ProductSerializer, ProductCategorySerializer
+from .serializers import ProductSerializerList, ProductSerializerDetail, ProductCategorySerializer
 
 
 # Product
 class ProductListView(APIView):
-    serializer_class = ProductSerializer
+    serializer_class = ProductSerializerList
 
     def get(self, request, id):
         category = get_object_or_404(ProductCategory, id=id)
         product = Product.objects.filter(category=category.id)
-        ser_data = ProductSerializer(instance=product,many=True)
+        ser_data = self.serializer_class(instance=product, many=True)
         return Response(data=ser_data.data, status=status.HTTP_200_OK)
 
+
 class ProductDetailView(RetrieveAPIView):
-    serializer_class = ProductSerializer
+    serializer_class = ProductSerializerDetail
     queryset = Product.objects.all()
     lookup_field = "id"
 
@@ -39,6 +40,3 @@ class ProductCategoryDetailView(APIView):
         subcategory = category.subcategory.all()
         ser_data = self.serializer_class(instance=subcategory, many=True)
         return Response(data=ser_data.data, status=status.HTTP_200_OK)
-
-
-
