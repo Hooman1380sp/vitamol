@@ -2,12 +2,12 @@ from rest_framework import serializers
 from .models import Product, ProductGallery, ProductCategory
 
 
-class ProductSerializerDetail(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     images = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ("name", "category", "description", "images")
+        fields = ("name", "category", "description", "images","id")
 
     def get_images(self, obj):
         result = obj.gallery.all()
