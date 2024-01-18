@@ -4,6 +4,7 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان")
     description = models.TextField(max_length=2500, verbose_name="توضیحات")
+    gallery = models.ManyToManyField(to='BlogGallery', verbose_name="وبلاگ", related_name="back_gallery")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
@@ -16,12 +17,10 @@ class Blog(models.Model):
 
 
 class BlogGallery(models.Model):
-    blog = models.ForeignKey(to="Blog", on_delete=models.CASCADE, verbose_name="وبلاگ", related_name="back_blog")
     image = models.ImageField(upload_to="blog", verbose_name="تصویر")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):
-        return f"{self.blog.title}"
+        return f"{self.id}"
 
     class Meta:
         verbose_name = "گالری وبلاگ"
