@@ -29,9 +29,7 @@ class Product(models.Model):
     description = models.TextField(max_length=7000, verbose_name="توضیحات")
     # price = models.IntegerField(verbose_name="قیمت", null=True, blank=True)
     # slug = models.SlugField(unique=True, verbose_name="آدرس اینترنتی", max_length=500, db_index=True)
-    gallery = models.ManyToManyField(
-        to="ProductGallery", verbose_name="تصاویر محصولات", related_name="gallery_back"
-    )
+    gallery = models.ManyToManyField(to="ProductGallery", verbose_name="تصاویر محصولات", related_name="gallery_back")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
 
     def __str__(self):

@@ -13,7 +13,7 @@ class ProductSerializerList(serializers.ModelSerializer):
     def get_description(self, obj):
         return obj.description[:50]
 
-    def get_images(self, obj:Product):
+    def get_images(self, obj):
         result = obj.gallery.all()
         return ProductGallerySerializer(instance=result, many=True).data
 
@@ -26,7 +26,7 @@ class ProductSerializerDetail(serializers.ModelSerializer):
         fields = ("name", "category", "description", "images")
 
     def get_images(self, obj):
-        result = obj.product_back.all()
+        result = obj.gallery.all()
         return ProductGallerySerializer(instance=result, many=True).data
 
 

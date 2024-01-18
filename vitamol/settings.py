@@ -128,7 +128,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-DEFAULT_CHARSET = 'utf-8'
+# DEFAULT_CHARSET = "utf-8"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -172,6 +172,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 # Arvan Clouds Storage
 
+
+# Localhost
+
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_ACCESS_KEY_ID = "37b843cd-1692-42c6-af48-2662ae70f593"
 AWS_S3_SECRET_ACCESS_KEY = "9d032a3d86a15c879b9f045c5e8540b57a64556e7ea6ced8873c5178671fae3b"
@@ -179,3 +182,13 @@ AWS_S3_ENDPOINT_URL = "https://vitamol.s3.ir-thr-at1.arvanstorage.ir"
 AWS_STORAGE_BUCKET_NAME = "vitamol"
 AWS_SERVICE_NAME = "s3"
 AWS_S3_FILE_OVERWRITE = False
+
+# production
+
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# AWS_ACCESS_KEY_ID = "127818df-bd8c-41f7-bc00-e2d965a62e7b"
+# AWS_S3_SECRET_ACCESS_KEY = "773eeacdb3c905906e2b4e1e43655fda39b55a48"
+# AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
+# AWS_STORAGE_BUCKET_NAME = "django-testing"
+# AWS_SERVICE_NAME = "s3"
+# AWS_S3_FILE_OVERWRITE = False

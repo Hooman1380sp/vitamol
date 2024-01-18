@@ -11,6 +11,8 @@ from .serializers import ProductSerializerList, ProductSerializerDetail, Product
 
 # Product
 class ProductListView(APIView):
+    """enter id(category) and take it products that related of category!"""
+
     serializer_class = ProductSerializerList
 
     def get(self, request, id):
@@ -21,18 +23,16 @@ class ProductListView(APIView):
 
 
 class ProductDetailView(RetrieveAPIView):
+    """enter id(product) and get"""
+
     serializer_class = ProductSerializerDetail
     queryset = Product.objects.all()
     lookup_field = "id"
 
 
-# productCategory
-# class ProductCategoryListView(ListAPIView):
-#     serializer_class = ProductCategorySerializer
-#     queryset = ProductCategory.objects.all()
-
-
 class ProductCategoryDetailView(APIView):
+    """get id(parent category) and take whole(subcategory)"""
+
     serializer_class = ProductCategorySerializer
 
     def get(self, request, id):
