@@ -8,7 +8,7 @@ class HiringSerializer(serializers.ModelSerializer):
         fields = ("fullname", "phone", "description", "email", "pdf_file")
 
 
-class ContancUsSerializer(serializers.ModelSerializer):
+class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactUs
         fields = ("fullname", "phone", "email", "day", "hour")
