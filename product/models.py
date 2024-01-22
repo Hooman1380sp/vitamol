@@ -26,7 +26,8 @@ class ProductCategory(MPTTModel):
 class Product(models.Model):
     name = models.CharField(max_length=226, verbose_name="نام محصول")
     category = models.ManyToManyField(to=ProductCategory, verbose_name="دسته بندی", related_name="category_back")
-    description = models.TextField(max_length=7000, verbose_name="توضیحات")
+    description = models.TextField(max_length=1200, verbose_name="توضیحات کوتاه",null=True,blank=True)
+    field = models.TextField(max_length=4000,verbose_name="توضیحات",null=True,blank=True)
     # price = models.IntegerField(verbose_name="قیمت", null=True, blank=True)
     # slug = models.SlugField(unique=True, verbose_name="آدرس اینترنتی", max_length=500, db_index=True)
     gallery = models.ManyToManyField(to="ProductGallery", verbose_name="تصاویر محصولات", related_name="gallery_back")
