@@ -15,7 +15,7 @@ class BlogSerializerList(serializers.ModelSerializer):
 
     def get_images(self, obj):
         result = obj.gallery.all()
-        return GalleryBlogSerializer(instance=result, many=True).data
+        return GalleryBlogSerializerReSizedImage(instance=result, many=True).data
 
 class BlogSerializerDetail(serializers.ModelSerializer):
     images = serializers.SerializerMethodField()
@@ -26,9 +26,14 @@ class BlogSerializerDetail(serializers.ModelSerializer):
 
     def get_images(self, obj):
         result = obj.gallery.all()
-        return GalleryBlogSerializer(instance=result, many=True).data
+        return GalleryBlogSerializerOriginalImage(instance=result, many=True).data
 
-class GalleryBlogSerializer(serializers.ModelSerializer):
+class GalleryBlogSerializerOriginalImage(serializers.ModelSerializer):
     class Meta:
         model = BlogGallery
-        fields = ("image",)
+        fields = ("original_image",)
+
+class GalleryBlogSerializerReSizedImage(serializers.ModelSerializer):
+    class Meta:
+        model = BlogGallery
+        fields = ("resized_image",)
