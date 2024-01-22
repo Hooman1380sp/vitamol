@@ -44,6 +44,7 @@ EXTERNAL_APPS = [
     "drf_spectacular",
     # "django_celery_beat",
     "storages",
+    "imagekit"
 ]
 
 INSTALLED_APPS = [
