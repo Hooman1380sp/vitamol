@@ -187,10 +187,10 @@ MEDIA_URL = "/media/"
 
 # production
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-AWS_ACCESS_KEY_ID = "127818df-bd8c-41f7-bc00-e2d965a62e7b"
-AWS_S3_SECRET_ACCESS_KEY = "773eeacdb3c905906e2b4e1e43655fda39b55a48"
-AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
-AWS_STORAGE_BUCKET_NAME = "django-testing"
-AWS_SERVICE_NAME = "s3"
-AWS_S3_FILE_OVERWRITE = False
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# AWS_ACCESS_KEY_ID = "127818df-bd8c-41f7-bc00-e2d965a62e7b"
+# AWS_S3_SECRET_ACCESS_KEY = "773eeacdb3c905906e2b4e1e43655fda39b55a48"
+# AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
+# AWS_STORAGE_BUCKET_NAME = "django-testing"
+# AWS_SERVICE_NAME = "s3"
+# AWS_S3_FILE_OVERWRITE = False
