@@ -7,9 +7,14 @@ from rest_framework.views import APIView
 from .models import Hiring,ContactUs
 from .serializers import HiringSerializer,ContactUsSerializer
 
-class HiringCreateView(CreateAPIView):
+class HiringCreateView(APIView):
     serializer_class = HiringSerializer
-    queryset = Hiring.objects.all()
+
+    def post(self, request):
+        ser_data = self.serializer_class(data=request.data)
+        ser_data.is_valid(raise_exception=True)
+        ser_data.save()
+        return Response(data=ser_data.data,status=status.HTTP_201_CREATED)
 
 class ContactUsCreateView(CreateAPIView):
     serializer_class = ContactUsSerializer
