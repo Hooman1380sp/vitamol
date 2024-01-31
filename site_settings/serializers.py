@@ -13,7 +13,8 @@ class ContactUsSerializer(serializers.ModelSerializer):
         model = ContactUs
         fields = ("fullname", "phone", "email", "day", "hour")
 
+
 class RegisterFakeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ContactUs
+        model = RegisterFake
         fields = ("name", "last_name", "phone", "description")

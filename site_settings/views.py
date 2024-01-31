@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.views import APIView
 
-from .models import Hiring,ContactUs
-from .serializers import HiringSerializer,ContactUsSerializer
+from .models import RegisterFake,ContactUs
+from .serializers import HiringSerializer,ContactUsSerializer,RegisterFakeSerializer
 
 class HiringCreateView(APIView):
     serializer_class = HiringSerializer
@@ -19,3 +19,7 @@ class HiringCreateView(APIView):
 class ContactUsCreateView(CreateAPIView):
     serializer_class = ContactUsSerializer
     queryset = ContactUs.objects.all()
+
+class RegisterFakeCreateView(CreateAPIView):
+    serializer_class = RegisterFakeSerializer
+    queryset = RegisterFake.objects.all()
