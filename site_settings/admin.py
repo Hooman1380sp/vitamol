@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hiring, ContactUs,RegisterFake
+from .models import Hiring, ContactUs, RegisterFake
 
 # Register your models here.
 
