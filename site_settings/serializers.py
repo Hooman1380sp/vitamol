@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hiring, ContactUs
+from .models import Hiring, ContactUs, RegisterFake
 
 
 class HiringSerializer(serializers.ModelSerializer):
@@ -12,3 +12,8 @@ class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactUs
         fields = ("fullname", "phone", "email", "day", "hour")
+
+class RegisterFakeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = ("name", "last_name", "phone", "description")

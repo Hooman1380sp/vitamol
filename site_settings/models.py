@@ -36,16 +36,19 @@ class ContactUs(models.Model):
         verbose_name = "تماس با ما"
         verbose_name_plural = "بخش تماس با ما"
 
+
 # register(Fake)
 
+
 class RegisterFake(models.Model):
-    name = models.CharField(max_length=150,verbose_name="نام",db_index=True)
-    last_name = models.CharField(max_length=150,verbose_name="نام خانوادگی")
-    phone = models.CharField(max_length=13,verbose_name="شماره تماس",db_index=True)
-    description = models.TextField(max_length=1000,verbose_name="توضیحات")
+    name = models.CharField(max_length=150, verbose_name="نام", db_index=True)
+    last_name = models.CharField(max_length=150, verbose_name="نام خانوادگی")
+    phone = models.CharField(max_length=13, verbose_name="شماره تماس", db_index=True)
+    description = models.TextField(max_length=1000, verbose_name="توضیحات")
 
     def __str__(self):
         return "{0} - {1}".format(self.name, self.last_name)
+
     class Meta:
         verbose_name = "کاربران ثبت نامی"
         verbose_name_plural = "کاربران ثبت نامی ها"
