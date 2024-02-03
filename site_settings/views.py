@@ -1,7 +1,6 @@
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from rest_framework import status
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
-from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.views import APIView
 
 from .models import RegisterFake, ContactUs, Event
@@ -28,6 +27,9 @@ class RegisterFakeCreateView(CreateAPIView):
     queryset = RegisterFake.objects.all()
 
 
-class EventDetailView(RetrieveAPIView):
+class EventDetailView(APIView):
     serializer_class = EventSerializer
-    queryset = Event.objects.all()
+
+    def get(self, request):
+        ser_data = self.serializer_class(instance=Event.objects.last())
+        return Response(data=ser_data.data, status=status.HTTP_200_OK)

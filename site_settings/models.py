@@ -59,7 +59,11 @@ class RegisterFake(models.Model):
 
 class Event(models.Model):
     description = models.CharField(max_length=250, verbose_name="توضیحات")
-    gallery_event = models.ManyToManyField(to="EventGallery", verbose_name="تصویر")
+    gallery_event = models.ManyToManyField(
+        to="EventGallery",
+        verbose_name="تصویر",
+        help_text="(اندازه پیش فرض تصاویر بنر اصلی سایت به صورت width=395px و height=549px است که تجریحا باید به فرمت webp یا درغیر اینصورت jpg و jpeg برای فشرده بودن حجم آن باشد. بهتر است حجم تصاویر نهایتا 150 الی 200 کیلوبایت باشند. برای اندازه تصویر الزامی نیست اما حتما باید ارتفاع(height) بیشتر از عرض(width) آن باشد. یعنی تصویر به صورت عمودی باشد)",
+    )
 
     def __str__(self):
         return self.description[:40]
@@ -70,11 +74,8 @@ class Event(models.Model):
 
 
 class EventGallery(models.Model):
-    image = models.ImageField(upload_to="event", verbose_name="")
-
-    def __str__(self):
-        return self.id
+    image = models.ImageField(upload_to="event", verbose_name="تصویر")
 
     class Meta:
         verbose_name = "تصاویر"
-        verbose_name_plural = "همه تصاویر"
+        verbose_name_plural = "تصاویر رویداد"
