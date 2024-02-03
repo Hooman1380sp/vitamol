@@ -1,11 +1,11 @@
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.views import APIView
 
-from .models import RegisterFake, ContactUs
-from .serializers import HiringSerializer, ContactUsSerializer, RegisterFakeSerializer
+from .models import RegisterFake, ContactUs, Event
+from .serializers import HiringSerializer, ContactUsSerializer, RegisterFakeSerializer, EventSerializer
 
 
 class HiringCreateView(APIView):
@@ -26,3 +26,8 @@ class ContactUsCreateView(CreateAPIView):
 class RegisterFakeCreateView(CreateAPIView):
     serializer_class = RegisterFakeSerializer
     queryset = RegisterFake.objects.all()
+
+
+class EventDetailView(RetrieveAPIView):
+    serializer_class = EventSerializer
+    queryset = Event.objects.all()
