@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hiring, ContactUs, RegisterFake
+from .models import Hiring, ContactUs, RegisterFake, Event, EventGallery
 
 
 class HiringSerializer(serializers.ModelSerializer):
@@ -18,3 +18,21 @@ class RegisterFakeSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegisterFake
         fields = ("name", "last_name", "phone", "description")
+
+
+class EventSerializer(serializers.ModelSerializer):
+    images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Event
+        field = ("description", "image")
+
+    def get_images(self, obj):
+        result = obj.gallery_event.all()
+        return EventGallerySerializer(instance=result, many=True).data
+
+
+class EventGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventGallery
+        field = ("image",)

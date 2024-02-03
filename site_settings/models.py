@@ -44,7 +44,7 @@ class RegisterFake(models.Model):
     name = models.CharField(max_length=150, verbose_name="نام", db_index=True)
     last_name = models.CharField(max_length=150, verbose_name="نام خانوادگی")
     phone = models.CharField(max_length=13, verbose_name="شماره تماس", db_index=True)
-    description = models.TextField(max_length=1000, verbose_name="توضیحات",null=True,blank=True)
+    description = models.TextField(max_length=1000, verbose_name="توضیحات", null=True, blank=True)
 
     def __str__(self):
         return "{0} - {1}".format(self.name, self.last_name)
@@ -53,11 +53,13 @@ class RegisterFake(models.Model):
         verbose_name = "کاربران ثبت نامی"
         verbose_name_plural = "کاربران ثبت نامی ها"
 
+
 # event
 
+
 class Event(models.Model):
-    description = models.CharField(max_length=250,verbose_name="توضیحات")
-    gallery_event = models.ManyToManyField(to="EventGallery",verbose_name="تصویر")
+    description = models.CharField(max_length=250, verbose_name="توضیحات")
+    gallery_event = models.ManyToManyField(to="EventGallery", verbose_name="تصویر")
 
     def __str__(self):
         return self.description[:40]
@@ -66,11 +68,13 @@ class Event(models.Model):
         verbose_name = "رویداد"
         verbose_name_plural = "رویدادها"
 
+
 class EventGallery(models.Model):
-    image = models.ImageField(upload_to="event",verbose_name="")
+    image = models.ImageField(upload_to="event", verbose_name="")
 
     def __str__(self):
         return self.id
+
     class Meta:
         verbose_name = "تصاویر"
         verbose_name_plural = "همه تصاویر"
